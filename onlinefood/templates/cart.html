@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+{% load static%}
+{% block content %}
+<h2>Active Order</h2>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Item</th>
+        <th scope="col">Price</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action </th>
+      </tr>
+    </thead>
+    <tbody>
+        {% if item is not None%}
+            {% for i in item %}  
+            <tr>  
+               <td>{{i.item.title}}</td>
+              <td>{{i.item.price}}</td>
+              <td>Pending</td>
+              <td> 
+                <form method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="item-id" value="{{i.id}}">
+                  <input type="submit" value="Delete" class="btn btn-dark"> 
+                
+                </form>
+                
+              </td>
+             </tr>
+             
+             {% endfor %}
+             
+         {% endif %}
+         
+    </tbody>
+  </table>
+  
+  <span class="text-center h2 ">Total: {{total}}</span><br>
+  
+ <a href="{%url 'checkout'%}" class="btn btn-dark" >Checkout</a>
+ 
+  
+  
+<br>
+<h2 class="mt-4">Previous Order</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Item</th>
+        <th scope="col">Price</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% if delivery is not None%}
+            {% for i in delivery %}  
+            <tr>  
+               <td>{{i.item.title}}</td>
+              <td>{{i.item.price}}</td>
+              <td>{{i.CartItems.status}}</td>
+              <td> 
+                
+              </td>
+             </tr>
+             {% endfor %}
+         {% endif %}
+    </tbody>
+  </table>
+
+
+{% endblock %}  

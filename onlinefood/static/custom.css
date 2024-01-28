@@ -1,0 +1,30 @@
+
+
+
+.footer_bottom {
+    float: left;
+    display: inline;
+    width: 100%;
+    padding: 10px 30px;
+    background-color: #353a40;
+    color: #ccc;
+}
+.copyright{
+    float: left;
+    width: 50%;
+    text-align: left;
+    padding-top: 5px;
+}
+.developer {
+    float: right;
+    width: 50%;
+    text-align: right;
+    padding-top: 5px;
+}
+
+.msg{
+    position:fixed;
+    bottom: 50px;
+    right: 0;
+    z-index: 100;
+}
